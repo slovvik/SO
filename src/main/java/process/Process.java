@@ -1,13 +1,21 @@
 package process;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Process {
 
     private int phaseProcessor;
+    private int addedTime;
 
-    public Process(int from, int to) {
-        phaseProcessor = ThreadLocalRandom.current().nextInt(from, to + 1);
+    public Process(int phaseProcessor, int addedTime) {
+        this.phaseProcessor = phaseProcessor;
+        this.addedTime = addedTime;
+    }
+
+    public int getAddedTime() {
+        return addedTime;
+    }
+
+    public void setAddedTime(int addedTime) {
+        this.addedTime = addedTime;
     }
 
     public int getPhaseProcessor() {
@@ -16,5 +24,13 @@ public class Process {
 
     public void setPhaseProcessor(int phaseProcessor) {
         this.phaseProcessor = phaseProcessor;
+    }
+
+    @Override
+    public String toString() {
+        return "Process{" +
+                "phaseProcessor=" + phaseProcessor +
+                ", addedTime=" + addedTime +
+                '}';
     }
 }
