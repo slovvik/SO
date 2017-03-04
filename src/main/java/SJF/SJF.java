@@ -29,8 +29,4 @@ public class SJF {
         }
         return averageAccess;
     }
-
-    public static void main(String[] args) {
-
-    }
 }
