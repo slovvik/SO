@@ -2,8 +2,6 @@ package FCFS.simulationData;
 
 import process.Process;
 
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SimulationData {
@@ -11,32 +9,35 @@ public class SimulationData {
     private static int FROM = 5;
     private static int TO = 500;
 
-    private Queue<Process> processesFIFOQueue;
+    private Process[] processes;
     private int workingTime;
 
     public SimulationData(int numberOfProcesses) {
-        processesFIFOQueue = new ConcurrentLinkedQueue<>();
-        for (int i = 0; i < numberOfProcesses; i++) {
-            addProcess();
+        processes = new Process[numberOfProcesses];
+        for (int i = 0; i < processes.length; i++) {
+            Process process = new Process(getRandomPhaseProcessor(FROM, TO), workingTime);
+            workingTime += process.getPhaseProcessor();
+            processes[i] = process;
         }
-    }
-
-    public void addProcess() {
-        Process process = new Process(getRandomPhaseProcessor(FROM, TO), workingTime);
-        processesFIFOQueue.add(process);
-
-        workingTime += process.getPhaseProcessor();
     }
 
     public String showProcesses() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Process process : processesFIFOQueue) {
-            stringBuilder.append(process.toString() + "\n");
+        for (int i = 0; i < processes.length; i++) {
+            stringBuilder.append(i + 1).append(": ").append(processes[i].toString()).append("\n");
         }
         return stringBuilder.toString();
     }
 
     private static int getRandomPhaseProcessor(int from, int to) {
         return ThreadLocalRandom.current().nextInt(from, to + 1);
+    }
+
+    public Process[] getProcesses() {
+        return processes;
+    }
+
+    public void setProcesses(Process[] processes) {
+        this.processes = processes;
     }
 }
