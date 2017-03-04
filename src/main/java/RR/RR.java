@@ -2,7 +2,6 @@ package RR;
 
 import process.Process;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -20,7 +19,7 @@ public class RR {
         int averageAccess[] = new int[simulationDatas.length];
         int nextProcessAccessTime = 0;
         for (int i = 0; i < simulationDatas.length; i++) {
-            Queue<Process> processesFIFOQueue = new LinkedList<>(Arrays.asList(simulationDatas[i].getProcesses()));
+            Queue<Process> processesFIFOQueue = new LinkedList<>((simulationDatas[i].getProcesses()));
             for (int j = 0; j < processesFIFOQueue.size(); j++) {
                 Process process = processesFIFOQueue.poll();
                 if (process.getPhaseProcessor() < timeQuantum) {
@@ -31,7 +30,7 @@ public class RR {
                     processesFIFOQueue.add(process);
                 }
             }
-            averageAccess[i] = nextProcessAccessTime / simulationDatas[i].getProcesses().length;
+            averageAccess[i] = nextProcessAccessTime / simulationDatas[i].getProcesses().size();
             nextProcessAccessTime = 0;
         }
         return averageAccess;
