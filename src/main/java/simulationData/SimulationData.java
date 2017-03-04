@@ -1,4 +1,4 @@
-package FCFS.simulationData;
+package simulationData;
 
 import process.Process;
 

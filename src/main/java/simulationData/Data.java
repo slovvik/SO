@@ -1,4 +1,4 @@
-package FCFS.simulationData;
+package simulationData;
 
 public class Data {
 

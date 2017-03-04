@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import static FCFS.simulationData.Data.showTestData;
-import static FCFS.simulationData.Data.simulationDatas;
+import static simulationData.Data.showTestData;
+import static simulationData.Data.simulationDatas;
 
 public class FCFS {
 
